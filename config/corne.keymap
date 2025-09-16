@@ -104,13 +104,13 @@
         };
 
         tdr: tap_dance_right {
-            compatible = "zmk, behavior-tap-dance";
+            compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo 2>, <&to 3>;
         };
         tdl: tap_dance_left {
-            compatible = "zmk, behavior-tap-dance";
+            compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo 1>, <&to 4>;
