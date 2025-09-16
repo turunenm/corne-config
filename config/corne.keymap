@@ -22,12 +22,12 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp DQT>, <&macro_tap &kp O>;
         };
-        i_dt: i_double_quote {
+        i_dqt: i_double_quote {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_tap &kp DQT>, <&macro_tap &kp SPACE>;
         };
-        i_st: i_single_quote {
+        i_sqt: i_single_quote {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_tap &kp SQT>, <&macro_tap &kp SPACE>;
@@ -62,7 +62,7 @@
         bpm: bt_prev_mod {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&none>, <&bt BT_NXT>;
+            bindings = <&none>, <&bt BT_PRV>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
         };
         bcm: bt_clr_mod {
