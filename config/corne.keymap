@@ -154,8 +154,8 @@
 // | SFT |  ^  |  `  |  '  |  "  |  ~  | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
 // |     |     |     | ALT | M-L | BSP | --- | SPC | MOV | CTL |     |     |     |
                         bindings = <
-   &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_caret  &kp AMPS   &kp ASTRK   &kp LPAR  &kp RPAR  &trans
-   &trans  &i_uml_a   &i_grave   &i_sqt    &i_dqt    &i_tilde       &kp EXCL  &kp QMARK  &kp COMMA   &kp DOT   &i_uml_o  &trans
+   &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_ct     &kp AMPS   &kp ASTRK   &kp LPAR  &kp RPAR  &trans
+   &trans  &i_ua      &i_gr      &i_sqt    &i_dqt    &i_td          &kp EXCL  &kp QMARK  &kp COMMA   &kp DOT   &i_uo  &trans
    &trans  &kp CARET  &kp GRAVE  &kp SQT   &kp DQT   &kp TILDE      &kp DEL   &sp4       &caps_word  &trans    &trans    &trans
                                  &trans    &trans    &trans         &trans    &to 3      &trans
                         >;
@@ -171,7 +171,7 @@
    &trans  &none      &none      &kp UNDER  &kp EQUAL  &none          &none     &kp PLUS  &kp MINUS   &kp PIPE  &kp COLON  &trans
    &trans  &kp LT     &kp LPAR   &kp LBKT   &kp LBRC   &kp FSLH       &kp BSLH  &kp RBRC  &kp RBKT    &kp RPAR  &kp GT     &trans
    &trans  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(B)      &kp DEL   &sp4      &caps_word  &trans    &trans     &trans
-                                 &trans     &to4       &trans         &trans    &trans    &trans
+                                 &trans     &to 4      &trans         &trans    &trans    &trans
                         >;
                 };
                 mov {  // bts and output toggle must use some modifier ALT, CTRL, SHIFT
@@ -185,7 +185,7 @@
    &trans  &bcm             &none        &bpm             &bnm         &otm           &none     &kp PG_UP  &kp UP      &kp PG_DN  &none    &trans
    &trans  &kp LA(LS(TAB))  &kp LA(TAB)  &kp LC(LS(TAB))  &kp LC(TAB)  &kp PSCRN      &kp HOME  &kp LEFT   &kp DOWN    &kp RIGHT  &kp END  &trans
    &trans  &kp LC(Z)        &kp LC(X)    &kp LC(C)        &kp LC(V)    &kp LC(B)      &kp DEL   &sp4       &caps_word  &trans     &trans   &trans
-                                         &trans           &to0         &trans         &trans    &to0       &trans
+                                         &trans           &to 0        &trans         &trans    &to 0      &trans
                         >;
                 };
                 num {  // +;*;(;, to -;/;);. with any modifier ALT, CTRL, SHIFT
@@ -199,7 +199,7 @@
    &trans  &kp F9  &kp F10  &kp F11 &kp F12  &kp N_LCK      &cdm    &kp N7   &kp N8  &kp N9  &pmm    &trans
    &trans  &kp F5  &kp F6   &kp F7  &kp F8   &kp INS        &kp N0  &kp N4   &kp N5  &kp N6  &mdm    &trans
    &trans  &kp F1  &kp F2   &kp F3  &kp F4   &kp S_LCK      &trans  &kp N1   &kp N2  &kp N3  &lrm    &trans
-                            &trans  &to0     &trans         &trans  &to0     &trans
+                            &trans  &to 0    &trans         &trans  &to 0    &trans
             >;
         };
     };
