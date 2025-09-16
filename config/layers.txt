@@ -1,13 +1,13 @@
-                                         LEFT
+LEFT
 // -------------------------------------------------------------------------------
 // | TAB |  !  |  @  |  #  |  $  |  %  | --- |  ^  |  &  |  *  |  (  |  )  | GUI |
 // | ESC |  Ä  |  `  |  '  |  "  |  ~  | --- |  !  |  ?  |  ,  |  .  |  Ö  | RET |
 // | SFT |  ^  |  `  |  '  |  "  |  ~  | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
 // |     |     |     | ALT | M-L | BSP | --- | SPC | MOV | CTL |     |     |     |
 
-                                        NUM
+NUM    +;*;(;, to -;/;);. with any modifier ALT, CTRL, SHIFT
 // ------------------------------------------------------------------------------
-// | TAB | F9 | F10 | F11 | F12 | NLK | --- | ,;. |  7  |  8  |  9  | +;- | GUI |
+// | TAB | F9 | F10 | F11 | F12 | CLK | --- | ,;. |  7  |  8  |  9  | +;- | GUI |
 // | ESC | F5 | F6  | F7  | F8  | INS | --- |  0  |  4  |  5  |  6  | *;/ | RET |
 // | SFT | F1 | F2  | F3  | F4  | SLK | --- | DEL |  1  |  2  |  3  | (;) | SFT |
 // |     |     |    | ALT | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
@@ -15,14 +15,14 @@
 
 
 
-                                        RIGHT
+RIGHT
 // -------------------------------------------------------------------------------
 // | TAB |     |     |  _  |  =  |     | --- |     |  +  |  -  |  |  |  :  | GUI |
 // | ESC |  <  |  (  |  [  |  {  |  /  | --- |  \  |  }  |  ]  |  )  |  >  | RET |
 // | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
 // |     |     |     | ALT | NUM | BSP | --- | SPC | M-R | CTL |     |     |     |
 
-                                           MOV
+MOV    bts and output toggle must use some modifier ALT, CTRL, SHIFT
 // ---------------------------------------------------------------------------------
 // | TAB | BTD  |     | BTP  | BTN | OTG | --- |     | PGU | UP  | PGD |     | GUI |
 // | ESC | ASTB | ATB | CSTB | CTB | SST | --- | HME | LFT | DWN | RGT | END | RET |
