@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
+ * Copyright (c) 2021 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
  */
@@ -7,53 +7,200 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
-
-                default_layer {
-                        display-name = "Default Layer";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
-                        >;
-                };
-                lower_layer {
-                        display-name = "Lower Layer";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
-                        >;
-                };
-
-                raise_layer {
-                        display-name = "Raise Layer";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
-                        >;
-                };
+    behaviors {
+        i_ua: i_uml_a {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp DQT>, <&macro_tap &kp A>;
         };
+        i_uo: i_uml_o {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp DQT>, <&macro_tap &kp O>;
+        };
+        i_dt: i_double_quote {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp DQT>, <&macro_tap &kp SPACE>;
+        };
+        i_st: i_single_quote {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp SQT>, <&macro_tap &kp SPACE>;
+        };
+        i_gr: i_grave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp GRAVE>, <&macro_tap &kp SPACE>;
+        };
+        i_td: i_tilde {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp TILDE>, <&macro_tap &kp SPACE>;
+        };
+        i_ct: i_caret {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings= <&macro_tap &kp CARET>, <&macro_tap &kp SPACE>;
+        };
+
+        sp4: four_spaces {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp SPACE &kp SPACE &kp SPACE &kp SPACE>;
+        };
+        bnm: bt_next_mod {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>, &bt BT_NXT>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+        bpm: bt_prev_mod {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>, &bt BT_NXT>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+        bcm: bt_clr_mod {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_CLR>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+        otm: out_tog_mod {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>, &out OUT_TOG>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+
+        pmm: plus_minus_mod {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_PLUS>, <&kp KP_MINUS>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+        mdm: mp_div_mod {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_MULTIPLY>, <&kp KP_DIVIDE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+        cdm: comma_dot_mod {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_COMMA>, <&kp KP_DOT>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+        lrm: lpar_rpar_mod {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_LPAR>, <&kp KP_RPAR>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTRL)>;
+        };
+
+        tdr: tap_dance_right {
+            compatible = "zmk, behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo 2>, <&to 3>;
+        };
+        tdl: tap_dance_left {
+            compatible = "zmk, behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo 1>, <&to 4>;
+        };
+
+    };
+};
+
+&caps_word {
+    continue-list = <
+                    UNDERSCORE
+                    MINUS
+                    DELETE
+                    BACKSPACE
+                    >;
+};
+
+/ {
+    keymap {
+        compatible =  "zmk,keymap" ;
+
+        default {
+                        display-name = "Def";
+// -------------------------------------------------------------------------------
+// | TAB |  Q  |  W  |  F  |  P  |  G  | --- |  J  |  L  |  U  |  Y  |  :  | GUI |
+// | ESC |  A  |  R  |  S  |  T  |  D  | --- |  H  |  N  |  E  |  I  |  O  | RET |
+// | SFT |  Z  |  X  |  C  |  V  |  B  | --- |  K  |  M  |  ,  |  .  |  ;  | SFT |
+// |     |     |     | ALT | M-L | BSP | --- | SPC | M-R | CTL |     |     |     |
+                        bindings = <
+   &kp TAB    &kp Q  &kp W  &kp F     &kp P  &kp G         &kp J      &kp L   &kp U      &kp Y     &kp COLON  &kp LGUI
+   &kp ESC    &kp A  &kp R  &kp S     &kp T  &kp D         &kp H      &kp N   &kp E      &kp I     &kp O      &kp RET
+   &kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B         &kp K      &kp M   &kp COMMA  &kp DOT   &kp SEMI   &kp LSHFT
+                            &kp LALT  &tdl   &kp BKSP      &kp SPACE  &tdr   &kp LCTRL
+                        >;
+                };
+                left_layer {
+                        display-name = "L";
+// -------------------------------------------------------------------------------
+// | TAB |  !  |  @  |  #  |  $  |  %  | --- |  ^  |  &  |  *  |  (  |  )  | GUI |
+// | ESC |  Ä  |  `  |  '  |  "  |  ~  | --- |  !  |  ?  |  ,  |  .  |  Ö  | RET |
+// | SFT |  ^  |  `  |  '  |  "  |  ~  | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
+// |     |     |     | ALT | M-L | BSP | --- | SPC | MOV | CTL |     |     |     |
+                        bindings = <
+   &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_caret  &kp AMPS   &kp ASTRK   &kp LPAR  &kp RPAR  &trans
+   &trans  &i_uml_a   &i_grave   &i_sqt    &i_dqt    &i_tilde       &kp EXCL  &kp QMARK  &kp COMMA   &kp DOT   &i_uml_o  &trans
+   &trans  &kp CARET  &kp GRAVE  &kp SQT   &kp DQT   &kp TILDE      &kp DEL   &sp4       &caps_word  &trans    &trans    &trans
+                                 &trans    &trans    &trans         &trans    &to 3      &trans
+                        >;
+                };
+                right_layer {
+                        display-name = "R";
+// -------------------------------------------------------------------------------
+// | TAB |     |     |  _  |  =  |     | --- |     |  +  |  -  |  |  |  :  | GUI |
+// | ESC |  <  |  (  |  [  |  {  |  /  | --- |  \  |  }  |  ]  |  )  |  >  | RET |
+// | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
+// |     |     |     | ALT | NUM | BSP | --- | SPC | M-R | CTL |     |     |     |
+                        bindings = <
+   &trans  &none      &none      &kp UNDER  &kp EQUAL  &none          &none     &kp PLUS  &kp MINUS   &kp PIPE  &kp COLON  &trans
+   &trans  &kp LT     &kp LPAR   &kp LBKT   &kp LBRC   &kp FSLH       &kp BSLH  &kp RBRC  &kp RBKT    &kp RPAR  &kp GT     &trans
+   &trans  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(B)      &kp DEL   &sp4      &caps_word  &trans    &trans     &trans
+                                 &trans     &to4       &trans         &trans    &trans    &trans
+                        >;
+                };
+                mov {  // bts and output toggle must use some modifier ALT, CTRL, SHIFT
+                        display-name = "MOV";
+// ---------------------------------------------------------------------------------
+// | TAB | BTD  |     | BTP  | BTN | OTG | --- |     | PGU | UP  | PGD |     | GUI |
+// | ESC | ASTB | ATB | CSTB | CTB | SST | --- | HME | LFT | DWN | RGT | END | RET |
+// | SFT | C+Z  | C+X | C+C  | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
+// |     |      |     | ALT  | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
+            bindings = <
+   &trans  &bcm             &none        &bpm             &bnm         &otm           &none     &kp PG_UP  &kp UP      &kp PG_DN  &none    &trans
+   &trans  &kp LA(LS(TAB))  &kp LA(TAB)  &kp LC(LS(TAB))  &kp LC(TAB)  &kp PSCRN      &kp HOME  &kp LEFT   &kp DOWN    &kp RIGHT  &kp END  &trans
+   &trans  &kp LC(Z)        &kp LC(X)    &kp LC(C)        &kp LC(V)    &kp LC(B)      &kp DEL   &sp4       &caps_word  &trans     &trans   &trans
+                                         &trans           &to0         &trans         &trans    &to0       &trans
+                        >;
+                };
+                num {  // +;*;(;, to -;/;);. with any modifier ALT, CTRL, SHIFT
+                        display-name = "NUM";
+// ------------------------------------------------------------------------------
+// | TAB | F9 | F10 | F11 | F12 | NLK | --- | ,;. |  7  |  8  |  9  | +;- | GUI |
+// | ESC | F5 | F6  | F7  | F8  | INS | --- |  0  |  4  |  5  |  6  | *;/ | RET |
+// | SFT | F1 | F2  | F3  | F4  | SLK | --- | DEL |  1  |  2  |  3  | (;) | SFT |
+// |     |     |    | ALT | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
+            bindings = <
+   &trans  &kp F9  &kp F10  &kp F11 &kp F12  &kp N_LCK      &cdm    &kp N7   &kp N8  &kp N9  &pmm    &trans
+   &trans  &kp F5  &kp F6   &kp F7  &kp F8   &kp INS        &kp N0  &kp N4   &kp N5  &kp N6  &mdm    &trans
+   &trans  &kp F1  &kp F2   &kp F3  &kp F4   &kp S_LCK      &trans  &kp N1   &kp N2  &kp N3  &lrm    &trans
+                            &trans  &to0     &trans         &trans  &to0     &trans
+            >;
+        };
+    };
 };
