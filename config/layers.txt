@@ -3,7 +3,7 @@ LEFT
 // | TAB |  !  |  @  |  #  |  $  |  %  | --- |  ^  |  &  |  *  |  (  |  )  | GUI |
 // | ESC |  Ä  |  `  |  '  |  "  |  ~  | --- |  !  |  ?  |  ,  |  .  |  Ö  | RET |
 // | SFT |  ^  |  `  |  '  |  "  |  ~  | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |     |     | ALT | M-L | BSP | --- | SPC | MOV | CTL |     |     |     |
+// |     |     |     | ALT | DEF | BSP | --- | SPC | NUM | CTL |     |     |     |
 
 NUM    +;*;(;, to -;/;);. with any modifier ALT, CTRL, SHIFT
 // ------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ RIGHT
 // | TAB |     |     |  _  |  =  |     | --- |     |  +  |  -  |  |  |  :  | GUI |
 // | ESC |  <  |  (  |  [  |  {  |  /  | --- |  \  |  }  |  ]  |  )  |  >  | RET |
 // | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |     |     | ALT | NUM | BSP | --- | SPC | M-R | CTL |     |     |     |
+// |     |     |     | ALT | MOV | BSP | --- | SPC | DEF | CTL |     |     |     |
 
 MOV    bts and output toggle must use some modifier ALT, CTRL, SHIFT
 // ---------------------------------------------------------------------------------

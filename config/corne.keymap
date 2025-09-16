@@ -148,7 +148,7 @@
 // | TAB |  !  |  @  |  #  |  $  |  %  | --- |  ^  |  &  |  *  |  (  |  )  | GUI |
 // | ESC |  Ä  |  `  |  '  |  "  |  ~  | --- |  !  |  ?  |  ,  |  .  |  Ö  | RET |
 // | SFT |  ^  |  `  |  '  |  "  |  ~  | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |     |     | ALT | M-L | BSP | --- | SPC | MOV | CTL |     |     |     |
+// |     |     |     | ALT | NUM | BSP | --- | SPC | DEF | CTL |     |     |     |
                         bindings = <
    &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_ct     &kp AMPS   &kp ASTRK   &kp LPAR  &kp RPAR  &trans
    &trans  &i_ua      &i_gr      &i_sqt    &i_dqt    &i_td          &kp EXCL  &kp QMARK  &kp COMMA   &kp DOT   &i_uo  &trans
@@ -162,7 +162,7 @@
 // | TAB |     |     |  _  |  =  |     | --- |     |  +  |  -  |  |  |  :  | GUI |
 // | ESC |  <  |  (  |  [  |  {  |  /  | --- |  \  |  }  |  ]  |  )  |  >  | RET |
 // | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |     |     | ALT | NUM | BSP | --- | SPC | M-R | CTL |     |     |     |
+// |     |     |     | ALT | DEF | BSP | --- | SPC | MOV | CTL |     |     |     |
                         bindings = <
    &trans  &none      &none      &kp UNDER  &kp EQUAL  &none          &none     &kp PLUS  &kp MINUS   &kp PIPE  &kp COLON  &trans
    &trans  &kp LT     &kp LPAR   &kp LBKT   &kp LBRC   &kp FSLH       &kp BSLH  &kp RBRC  &kp RBKT    &kp RPAR  &kp GT     &trans
