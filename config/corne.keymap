@@ -10,6 +10,7 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#define MO_SL(layer) &mo_sl layer layer   // Macro to apply momentary-layer-on-hold/sticky-layer-on-tap to a specific layer
 / {
     behaviors {
         i_ua: i_uml_a {
@@ -103,17 +104,12 @@
             mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTL)>;
         };
 
-        tdr: tap_dance_right {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
+        mo_sl: behavior_mo_sl {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&mo 2>, <&to 3>;
-        };
-        tdl: tap_dance_left {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo 1>, <&to 4>;
+            bindings = <&mo>, <&sl>;
         };
 
     };
@@ -140,10 +136,10 @@
 // | SFT |  Z  |  X  |  C  |  V  |  B  | --- |  K  |  M  |  ,  |  .  |  ;  | SFT |
 // |     |     |     | ALT | M-L | BSP | --- | SPC | M-R | CTL |     |     |     |
                         bindings = <
-   &kp TAB    &kp Q  &kp W  &kp F     &kp P  &kp G         &kp J      &kp L   &kp U      &kp Y     &kp COLON  &kp LGUI
-   &kp ESC    &kp A  &kp R  &kp S     &kp T  &kp D         &kp H      &kp N   &kp E      &kp I     &kp O      &kp RET
-   &kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B         &kp K      &kp M   &kp COMMA  &kp DOT   &kp SEMI   &kp LSHFT
-                            &kp LALT  &tdl   &kp BSPC      &kp SPACE  &tdr   &kp LCTRL
+   &kp TAB    &kp Q  &kp W  &kp F     &kp P      &kp G         &kp J      &kp L      &kp U      &kp Y     &kp COLON  &kp LGUI
+   &kp ESC    &kp A  &kp R  &kp S     &kp T      &kp D         &kp H      &kp N      &kp E      &kp I     &kp O      &kp RET
+   &kp LSHFT  &kp Z  &kp X  &kp C     &kp V      &kp B         &kp K      &kp M      &kp COMMA  &kp DOT   &kp SEMI   &kp LSHFT
+                            &kp LALT  MO_SL(1)   &kp BSPC      &kp SPACE  MO_SL(2)   &kp LCTRL
                         >;
                 };
                 left_layer {
@@ -157,7 +153,7 @@
    &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_ct     &kp AMPS   &kp ASTRK   &kp LPAR  &kp RPAR  &trans
    &trans  &i_ua      &i_gr      &i_sqt    &i_dqt    &i_td          &kp EXCL  &kp QMARK  &kp COMMA   &kp DOT   &i_uo  &trans
    &trans  &kp CARET  &kp GRAVE  &kp SQT   &kp DQT   &kp TILDE      &kp DEL   &sp4       &caps_word  &trans    &trans    &trans
-                                 &trans    &trans    &trans         &trans    &to 3      &trans
+                                 &trans    &to 4    &trans          &trans    &to 0      &trans
                         >;
                 };
                 right_layer {
@@ -171,7 +167,7 @@
    &trans  &none      &none      &kp UNDER  &kp EQUAL  &none          &none     &kp PLUS  &kp MINUS   &kp PIPE  &kp COLON  &trans
    &trans  &kp LT     &kp LPAR   &kp LBKT   &kp LBRC   &kp FSLH       &kp BSLH  &kp RBRC  &kp RBKT    &kp RPAR  &kp GT     &trans
    &trans  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(B)      &kp DEL   &sp4      &caps_word  &trans    &trans     &trans
-                                 &trans     &to 4      &trans         &trans    &trans    &trans
+                                 &trans     &to 3      &trans         &trans    &to 0     &trans
                         >;
                 };
                 mov {  // bts and output toggle must use some modifier ALT, CTRL, SHIFT
