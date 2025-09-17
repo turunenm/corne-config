@@ -24,7 +24,7 @@ RIGHT
 
 MOV    bts and output toggle must use some modifier ALT, CTRL, SHIFT
 // ---------------------------------------------------------------------------------
-// | TAB | BTD  |     | BTP  | BTN | OTG | --- |     | PGU | UP  | PGD |     | GUI |
-// | ESC | ASTB | ATB | CSTB | CTB | SST | --- | HME | LFT | DWN | RGT | END | RET |
-// | SFT | C+Z  | C+X | C+C  | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |      |     | ALT  | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
+// | TAB | BTD |     | BTP | BTN | OTG | --- |     | PGU | UP  | PGD |     | GUI |
+// | ESC | SFT | CTL | GUI | ALT | SST | --- | HME | LFT | DWN | RGT | END | RET |
+// | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
+// |     |     |    | ALT  | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
