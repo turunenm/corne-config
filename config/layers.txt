@@ -10,7 +10,7 @@ NUM    +;*;(;, to -;/;);. with any modifier ALT, CTRL, SHIFT
 // | TAB | F9 | F10 | F11 | F12 | CLK | --- | ,;. |  7  |  8  |  9  | +;- | GUI |
 // | ESC | F5 | F6  | F7  | F8  | INS | --- |  0  |  4  |  5  |  6  | *;/ | RET |
 // | SFT | F1 | F2  | F3  | F4  | SLK | --- | DEL |  1  |  2  |  3  | (;) | SFT |
-// |     |     |    | ALT | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
+// |     |    |     | ALT | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
 
 
 
