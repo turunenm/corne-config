@@ -173,15 +173,15 @@
                 mov {  // bts and output toggle must use some modifier ALT, CTRL, SHIFT
                         display-name = "MOV";
 // ---------------------------------------------------------------------------------
-// | TAB | BTD  |     | BTP  | BTN | OTG | --- |     | PGU | UP  | PGD |     | GUI |
-// | ESC | ASTB | ATB | CSTB | CTB | SST | --- | HME | LFT | DWN | RGT | END | RET |
-// | SFT | C+Z  | C+X | C+C  | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |      |     | ALT  | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
+// | TAB | BTD |     | BTP | BTN | OTG | --- |     | PGU | UP  | PGD |     | GUI |
+// | ESC | SFT | CTL | GUI | ALT | SST | --- | HME | LFT | DWN | RGT | END | RET |
+// | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
+// |     |     |    | ALT  | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
             bindings = <
-   &trans  &bcm             &none        &bpm             &bnm         &otm           &none     &kp PG_UP  &kp UP      &kp PG_DN  &none    &trans
-   &trans  &kp LA(LS(TAB))  &kp LA(TAB)  &kp LC(LS(TAB))  &kp LC(TAB)  &kp PSCRN      &kp HOME  &kp LEFT   &kp DOWN    &kp RIGHT  &kp END  &trans
-   &trans  &kp LC(Z)        &kp LC(X)    &kp LC(C)        &kp LC(V)    &kp LC(B)      &kp DEL   &sp4       &caps_word  &trans     &trans   &trans
-                                         &trans           &to 0        &trans         &trans    &to 0      &trans
+   &trans  &bcm       &none      &bpm      &bnm       &otm           &none     &kp PG_UP  &kp UP      &kp PG_DN  &none    &trans
+   &trans  &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp PSCRN      &kp HOME  &kp LEFT   &kp DOWN    &kp RIGHT  &kp END  &trans
+   &trans  &kp LC(Z)  &kp LC(X)  &kp LC(C) &kp LC(V)  &kp LC(B)      &kp DEL   &sp4       &caps_word  &trans     &trans   &trans
+                                 &trans    &to 0      &trans         &trans    &to 0      &trans
                         >;
                 };
                 num {  // +;*;(;, to -;/;);. with any modifier ALT, CTRL, SHIFT
