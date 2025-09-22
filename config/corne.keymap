@@ -10,7 +10,6 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define MO_SL(layer) &mo_sl layer layer   // Macro to apply momentary-layer-on-hold/sticky-layer-on-tap to a specific layer
 / {
     behaviors {
         i_ua: i_uml_a {
@@ -82,36 +81,27 @@
         pmm: plus_minus_mod {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp KP_PLUS>, <&kp KP_MINUS>;
+            bindings = <&kp PLUS>, <&kp MINUS>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTL)>;
         };
         mdm: mp_div_mod {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp KP_MULTIPLY>, <&kp KP_DIVIDE>;
+            bindings = <&kp ASTRK>, <&kp SLASH>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTL)>;
         };
         cdm: comma_dot_mod {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp KP_COMMA>, <&kp KP_DOT>;
+            bindings = <&kp COMMA>, <&kp DOT>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTL)>;
         };
         lrm: lpar_rpar_mod {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp KP_LPAR>, <&kp KP_RPAR>;
+            bindings = <&kp LPAR>, <&kp RPAR>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_LALT|MOD_LCTL)>;
         };
-
-        mo_sl: behavior_mo_sl {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&sl>;
-        };
-
     };
 };
 
@@ -124,6 +114,10 @@
                     >;
 };
 
+&sl {
+    release-after-ms = <200>;
+};
+
 / {
     keymap {
         compatible =  "zmk,keymap" ;
@@ -134,12 +128,12 @@
 // | TAB |  Q  |  W  |  F  |  P  |  G  | --- |  J  |  L  |  U  |  Y  |  :  | GUI |
 // | ESC |  A  |  R  |  S  |  T  |  D  | --- |  H  |  N  |  E  |  I  |  O  | RET |
 // | SFT |  Z  |  X  |  C  |  V  |  B  | --- |  K  |  M  |  ,  |  .  |  ;  | SFT |
-// |     |     |     | ALT | M-L | BSP | --- | SPC | M-R | CTL |     |     |     |
+// |     |     |     | CTL | S-L | BSP | --- | SPC | S-R | ALT |     |     |     |
                         bindings = <
-   &kp TAB    &kp Q  &kp W  &kp F     &kp P      &kp G         &kp J      &kp L      &kp U      &kp Y     &kp COLON  &kp LGUI
-   &kp ESC    &kp A  &kp R  &kp S     &kp T      &kp D         &kp H      &kp N      &kp E      &kp I     &kp O      &kp RET
-   &kp LSHFT  &kp Z  &kp X  &kp C     &kp V      &kp B         &kp K      &kp M      &kp COMMA  &kp DOT   &kp SEMI   &kp LSHFT
-                            &kp LALT  MO_SL(1)   &kp BSPC      &kp SPACE  MO_SL(2)   &kp LCTRL
+   &kp TAB    &kp Q  &kp W  &kp F      &kp P      &kp G         &kp J      &kp L  &kp U      &kp Y     &kp COLON  &kp LGUI
+   &kp ESC    &kp A  &kp R  &kp S      &kp T      &kp D         &kp H      &kp N  &kp E      &kp I     &kp O      &kp RET
+   &kp LSHFT  &kp Z  &kp X  &kp C      &kp V      &kp B         &kp K      &kp M  &kp COMMA  &kp DOT   &kp SEMI   &kp LSHFT
+                            &kp LCTRL  &sl 1      &kp BSPC      &kp SPACE  &sl 2  &kp LALT
                         >;
                 };
                 left_layer {
@@ -148,7 +142,7 @@
 // | TAB |  !  |  @  |  #  |  $  |  %  | --- |  ^  |  &  |  *  |  (  |  )  | GUI |
 // | ESC |  Ä  |  `  |  '  |  "  |  ~  | --- |  !  |  ?  |  ,  |  .  |  Ö  | RET |
 // | SFT |  ^  |  `  |  '  |  "  |  ~  | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |     |     | ALT | NUM | BSP | --- | SPC | DEF | CTL |     |     |     |
+// |     |     |     | CTL | NUM | BSP | --- | SPC | DEF | ALT |     |     |     |
                         bindings = <
    &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_ct     &kp AMPS   &kp ASTRK   &kp LPAR  &kp RPAR  &trans
    &trans  &i_ua      &i_gr      &i_sqt    &i_dqt    &i_td          &kp EXCL  &kp QMARK  &kp COMMA   &kp DOT   &i_uo  &trans
@@ -162,7 +156,7 @@
 // | TAB |     |     |  _  |  =  |     | --- |     |  +  |  -  |  |  |  :  | GUI |
 // | ESC |  <  |  (  |  [  |  {  |  /  | --- |  \  |  }  |  ]  |  )  |  >  | RET |
 // | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |     |     | ALT | DEF | BSP | --- | SPC | MOV | CTL |     |     |     |
+// |     |     |     | CTL | DEF | BSP | --- | SPC | MOV | ALT |     |     |     |
                         bindings = <
    &trans  &none      &none      &kp UNDER  &kp EQUAL  &none          &none     &kp PLUS  &kp MINUS   &kp PIPE  &kp COLON  &trans
    &trans  &kp LT     &kp LPAR   &kp LBKT   &kp LBRC   &kp FSLH       &kp BSLH  &kp RBRC  &kp RBKT    &kp RPAR  &kp GT     &trans
@@ -172,30 +166,30 @@
                 };
                 mov {  // bts and output toggle must use some modifier ALT, CTRL, SHIFT
                         display-name = "MOV";
-// ---------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------
 // | TAB | BTD |     | BTP | BTN | OTG | --- |     | PGU | UP  | PGD |     | GUI |
-// | ESC | SFT | CTL | GUI | ALT | SST | --- | HME | LFT | DWN | RGT | END | RET |
-// | SFT | C+Z | C+X | C+C | C+V | C+B | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
-// |     |     |    | ALT  | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
+// | ESC | GUI | SFT | CTL | ALT | SST | --- | HME | LFT | DWN | RGT | END | RET |
+// | SFT |  Z  |  X  |  C  |  V  |  B  | --- | DEL | 4sp | CAP |  .  |  ;  | SFT |
+// |     |     |     | CTL | S-L | BSP | --- | SPC | S-R | ALT |     |     |     |
             bindings = <
-   &trans  &bcm       &none      &bpm      &bnm       &otm           &none     &kp PG_UP  &kp UP      &kp PG_DN  &none    &trans
-   &trans  &kp LSHFT  &kp LCTRL  &kp LGUI  &kp LALT   &kp PSCRN      &kp HOME  &kp LEFT   &kp DOWN    &kp RIGHT  &kp END  &trans
-   &trans  &kp LC(Z)  &kp LC(X)  &kp LC(C) &kp LC(V)  &kp LC(B)      &kp DEL   &sp4       &caps_word  &trans     &trans   &trans
-                                 &trans    &to 0      &trans         &trans    &to 0      &trans
+   &trans  &bcm      &none      &bpm       &bnm      &otm           &none     &kp PG_UP  &kp UP      &kp PG_DN  &none    &trans
+   &trans  &kp LGUI  &kp LSHFT  &kp LCTRL  &kp LALT  &kp PSCRN      &kp HOME  &kp LEFT   &kp DOWN    &kp RIGHT  &kp END  &trans
+   &trans  &kp Z     &kp X      &kp C      &kp V     &kp B          &kp DEL   &sp4       &caps_word  &trans     &trans   &trans
+                                &trans     &trans    &trans         &trans    &trans     &trans
                         >;
                 };
                 num {  // +;*;(;, to -;/;);. with any modifier ALT, CTRL, SHIFT
                         display-name = "NUM";
-// ------------------------------------------------------------------------------
-// | TAB | F9 | F10 | F11 | F12 | CLK | --- | ,;. |  7  |  8  |  9  | +;- | GUI |
-// | ESC | F5 | F6  | F7  | F8  | INS | --- |  0  |  4  |  5  |  6  | *;/ | RET |
-// | SFT | F1 | F2  | F3  | F4  | SLK | --- | DEL |  1  |  2  |  3  | (;) | SFT |
-// |     |     |    | ALT | DEF | BSP | --- | SPC | DEF | CTL |     |     |     |
+// -------------------------------------------------------------------------------
+// | TAB | F9  | F10 | F11 | F12 | CLK | --- | ,;. |  7  |  8  |  9  | *;/ | GUI |
+// | ESC | F5  | F6  | F7  | F8  | INS | --- | +;- |  4  |  5  |  6  |  0  | RET |
+// | SFT | F1  | F2  | F3  | F4  | SLK | --- | DEL |  1  |  2  |  3  | (;) | SFT |
+// |     |     |     | CTL | S-L | BSP | --- | SPC | S-R | ALT |     |     |     |
             bindings = <
-   &trans  &kp F9  &kp F10  &kp F11 &kp F12  &kp CLCK      &cdm     &kp N7   &kp N8  &kp N9  &pmm    &trans
-   &trans  &kp F5  &kp F6   &kp F7  &kp F8   &kp INS       &kp N0   &kp N4   &kp N5  &kp N6  &mdm    &trans
+   &trans  &kp F9  &kp F10  &kp F11 &kp F12  &kp CLCK      &cdm     &kp N7   &kp N8  &kp N9  &mdm    &trans
+   &trans  &kp F5  &kp F6   &kp F7  &kp F8   &kp INS       &pmm     &kp N4   &kp N5  &kp N6  &kp N0    &trans
    &trans  &kp F1  &kp F2   &kp F3  &kp F4   &kp SLCK      &kp DEL  &kp N1   &kp N2  &kp N3  &lrm    &trans
-                            &trans  &to 0    &trans        &trans   &to 0    &trans
+                            &trans  &trans   &trans        &trans   &trans   &trans
             >;
         };
     };
