@@ -60,7 +60,7 @@
             bindings = <&none>, <&bt BT_NXT>;
         };
         bpt: bt_prev_tap_dance {
-            ccompatible = "zmk,behavior-tap-dance";
+            compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&none>, <&bt BT_PRV>;
