@@ -122,70 +122,56 @@
 // | TAB |  Q  |  W  |  F  |  P  |  G  | --- |  J  |  L  |  U  |  Y  |  :  | RET |
 // | SFT |  A  |  R  |  S  |  T  |  D  | --- |  H  |  N  |  E  |  I  |  O  | SFT |
 // | CTL |  Z  |  X  |  C  |  V  |  B  | --- |  K  |  M  |  ,  |  .  |  ;  | ALT |
-// |     |     |     | GUI | MLN | BSP | --- | SPC | MRM |     |     |     |     |
+// |     |     |     | GUI | LFT | BSP | --- | SPC | RGT | ESC |     |     |     |
                         bindings = <
    &kp TAB    &kp Q  &kp W  &kp F     &kp P      &kp G         &kp J      &kp L     &kp U      &kp Y     &kp COLON  &kp RET
    &kp LSHFT  &kp A  &kp R  &kp S     &kp T      &kp D         &kp H      &kp N     &kp E      &kp I     &kp O      &kp LSHFT
    &kp LCTRL  &kp Z  &kp X  &kp C     &kp V      &kp B         &kp K      &kp M     &kp COMMA  &kp DOT   &kp SEMI   &kp LALT
-                            &kp LGUI  &mtl 3 2   &kp BSPC      &kp SPACE  &mtl 4 1  &none
+                            &kp LGUI  &mo 1     &kp BSPC      &kp SPACE  &mo 2     &kp ESC
                         >;
                 };
-                mov {  // bts and output toggle must use some modifier ALT, CTRL, SHIFT
-                        display-name = "MOV";
-// -------------------------------------------------------------------------------
-// | TAB |  Q  |  W  |  F  |  P  |  G  | --- |  J  | PGU | UP  | PGD |  :  | RET |
-// | SFT |  A  |  R  |  S  |  T  |  D  | --- | HME | LFT | DWN | RGT | END | SFT |
-// | CTL |  Z  |  X  |  C  |  V  |  B  | --- |  K  | DEL |  .  |  ,  | SST | ALT |
-// |     |     |     | GUI | MLN | BSP | --- | SPC | MRM | DEF |     |     |     |
-            bindings = <
-   &trans  &trans  &trans  &trans  &trans    &trans      &trans    &kp PG_UP  &kp UP    &kp PG_DN  &trans   &trans
-   &trans  &trans  &trans  &trans  &trans    &trans      &kp HOME  &kp LEFT   &kp DOWN  &kp RIGHT  &kp END  &trans
-   &trans  &trans  &trans  &trans  &trans    &trans      &trans    &kp DEL    &trans    &trans     &sst     &trans
-                           &trans  &mtl 3 2  &trans      &trans    &mtl 4 1   &to 0
-                        >;
-                };
-                num {  // OTG, BTN, BTP, BTD, OFF with double-tap
-                        display-name = "NUM";
-// -------------------------------------------------------------------------------
-// | TAB | F9  | F10 | F11 | F12 | OTG | --- |     |  7  |  8  |  9  | OFF | RET |
-// | SFT | F5  | F6  | F7  | F8  | BTN | --- |     |  4  |  5  |  6  |  0  | SFT |
-// | CTL | F1  | F2  | F3  | F4  | BTP | --- |     |  1  |  2  |  3  | BTD | ALT |
-// |     |     |     | GUI | MLN | BSP | --- | SPC | MRM | DEF |     |     |     |
-            bindings = <
-   &trans  &kp F9  &kp F10  &kp F11 &kp F12   &ott        &none   &kp N7    &kp N8  &kp N9  &oft    &trans
-   &trans  &kp F5  &kp F6   &kp F7  &kp F8    &bnt        &none   &kp N4    &kp N5  &kp N6  &kp N0  &trans
-   &trans  &kp F1  &kp F2   &kp F3  &kp F4    &bpt        &none   &kp N1    &kp N2  &kp N3  &bct    &trans
-                            &trans  &mtl 3 2  &trans      &trans  &mtl 4 1  &to 0
-            >;
-        };
                 left_layer {
                         display-name = "L";
 // -------------------------------------------------------------------------------
 // | TAB |  !  |  @  |  #  |  $  |  %  | --- |  ^  |  &  |  *  |  (  |  )  | RET |
-// | SFT |  Ä  |  `  |  '  |  "  |  ~  | --- |  !  |  ?  |  ,  |  .  |  Ö  | SFT |
-// | CTL |  ^  |  `  |  '  |  "  |  ~  | --- | 4sp | DEL | CAP |  .  |  ;  | ALT |
-// |     |     |     | GUI |     | BSP | --- | SPC |     | ESC |     |     |     |
+// | SFT |  Ä  |  `  |  '  |  "  |  ~  | --- |  ?  |  =  |  +  |  -  |  Ö  | SFT |
+// | CTL |  ^  |  `  |  '  |  "  |  ~  | --- | 4sp | DEL | CAP |  _  |  ;  | ALT |
+// |     |     |     | GUI |     | BSP | --- | SPC | NUM | ESC |     |     |     |
                         bindings = <
-   &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_ct     &kp AMPS   &kp ASTRK   &kp LPAR  &kp RPAR  &trans
-   &trans  &i_ua      &i_gr      &i_sqt    &i_dqt    &i_td          &kp EXCL  &kp QMARK  &kp COMMA   &kp DOT   &i_uo     &trans
-   &trans  &kp CARET  &kp GRAVE  &kp SQT   &kp DQT   &kp TILDE      &sp4      &kp DEL    &caps_word  &kp DOT   &kp SEMI  &trans
-                                 &trans    &none     &trans         &trans    &none      &kp ESC
+   &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_ct      &kp AMPS   &kp ASTRK   &kp LPAR    &kp RPAR  &trans
+   &trans  &i_ua      &i_gr      &i_sqt    &i_dqt    &i_td          &kp QMARK  &kp EQUAL  &kp PLUS    &kp MINUS   &i_uo     &trans
+   &trans  &kp CARET  &kp GRAVE  &kp SQT   &kp DQT   &kp TILDE      &sp4       &kp DEL    &caps_word  &kp UNDER   &kp SEMI  &trans
+                                 &trans    &none     &trans         &trans     &mo 3      &trans
                         >;
                 };
                 right_layer {
                         display-name = "R";
 // -------------------------------------------------------------------------------
-// | TAB |     |     |  _  |  =  |     | --- |     |  +  |  -  |  |  |  :  | RET |
-// | SFT |  <  |  (  |  [  |  {  |  /  | --- |  \  |  }  |  ]  |  )  |  >  | SFT |
-// | CTL |  Z  |  X  |  C  |  V  |  B  | --- | 4sp | DEL | CAP |  .  |  ;  | ALT |
-// |     |     |     | GUI |     | BSP | --- | SPC |     | ESC |     |     |     |
+// | TAB |  >  |  ]  |  )  |  )  |  \  | --- | HME | PGU | UP  | PGD | END | RET |
+// | SFT |  <  |  [  |  {  |  (  |  /  | --- |     | LFT | DWN | RGT |     | SFT |
+// | CTL |  Z  |  X  |  C  |  V  |  B  | --- | 4sp | DEL | CAP |     |     | ALT |
+// |     |     |     | GUI | NUM | BSP | --- | SPC |     | ESC |     |     |     |
                         bindings = <
-   &trans  &none   &none      &kp UNDER  &kp EQUAL  &none         &none     &kp PLUS  &kp MINUS   &kp PIPE  &kp COLON  &trans
-   &trans  &kp LT  &kp LPAR   &kp LBKT   &kp LBRC   &kp FSLH      &kp BSLH  &kp RBRC  &kp RBKT    &kp RPAR  &kp GT     &trans
-   &trans  &kp Z   &kp X      &kp C      &kp V      &kp B         &sp4      &kp DEL   &caps_word  &trans    &trans     &trans
-                              &trans     &none      &trans        &trans    &none     &kp ESC
+   &trans  &kp GT    &kp RBKT  &kp RBRC   &kp RPAR  &kp BSLH      &kp HOME  &kp PG_UP  &kp UP      &kp PG_DN  &kp END  &trans
+   &trans  &kp LT    &kp LBKT  &kp LBRC   &kp LPAR  &kp FSLH      &none     &kp RBRC   &kp RBKT    &kp RPAR   &none    &trans
+   &trans  &kp Z     &kp X     &kp C      &kp V     &kp B         &sp4      &kp DEL    &caps_word  &none      &none    &trans
+                               &trans     &mo 3     &trans        &trans    &none      &trans
                         >;
                 };
+                num {  // OTG, BTN, BTP, BTD, OFF with double-tap
+                        display-name = "NUM";
+// -------------------------------------------------------------------------------
+// | TAB | F9  | F10 | F11 | F12 | OTG | --- |  ,  |  7  |  8  |  9  | OFF | RET |
+// | SFT | F5  | F6  | F7  | F8  | BTN | --- |  .  |  4  |  5  |  6  |  0  | SFT |
+// | CTL | F1  | F2  | F3  | F4  | BTP | --- |     |  1  |  2  |  3  | BTD | ALT |
+// |     |     |     | GUI | MLD | BSP | --- | SPC | MRD | ESC |     |     |     |
+            bindings = <
+   &trans  &kp F9  &kp F10  &kp F11 &kp F12   &ott        &kp COMMA  &kp N7    &kp N8  &kp N9  &oft    &trans
+   &trans  &kp F5  &kp F6   &kp F7  &kp F8    &bnt        &kp DOT    &kp N4    &kp N5  &kp N6  &kp N0  &trans
+   &trans  &kp F1  &kp F2   &kp F3  &kp F4    &bpt        &none      &kp N1    &kp N2  &kp N3  &bct    &trans
+                            &trans  &mtl 1 0  &trans      &trans     &mtl 2 0  &trans
+            >;
+        };
 
     };
 };
