@@ -153,7 +153,7 @@
 // |     |     |     | GUI | NUM | BSP | --- | SPC |     | ESC |     |     |     |
                         bindings = <
    &trans  &kp GT    &kp RBKT  &kp RBRC   &kp RPAR  &kp BSLH      &kp HOME  &kp PG_UP  &kp UP      &kp PG_DN  &kp END  &trans
-   &trans  &kp LT    &kp LBKT  &kp LBRC   &kp LPAR  &kp FSLH      &none     &kp RBRC   &kp RBKT    &kp RPAR   &none    &trans
+   &trans  &kp LT    &kp LBKT  &kp LBRC   &kp LPAR  &kp FSLH      &none     &kp LEFT   &kp DOWN    &kp RIGHT  &none    &trans
    &trans  &kp Z     &kp X     &kp C      &kp V     &kp B         &sp4      &kp DEL    &caps_word  &none      &none    &trans
                                &trans     &mo 3     &trans        &trans    &none      &trans
                         >;
