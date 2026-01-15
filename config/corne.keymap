@@ -135,12 +135,12 @@
 // -------------------------------------------------------------------------------
 // | TAB |  !  |  @  |  #  |  $  |  %  | --- |  ^  |  &  |  *  |  (  |  )  | RET |
 // | SFT |  Ä  |  `  |  '  |  "  |  ~  | --- |  ?  |  =  |  +  |  -  |  Ö  | SFT |
-// | CTL |  ^  |  `  |  '  |  "  |  ~  | --- | 4sp | DEL | CAP |  _  |  ;  | ALT |
+// | CTL |  ^  |  `  |  '  |  "  |  ~  | --- | 4sp | DEL | CAP |  _  |  |  | ALT |
 // |     |     |     | GUI |     | BSP | --- | SPC | NUM | ESC |     |     |     |
                         bindings = <
    &trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT      &i_ct      &kp AMPS   &kp ASTRK   &kp LPAR    &kp RPAR  &trans
    &trans  &i_ua      &i_gr      &i_sqt    &i_dqt    &i_td          &kp QMARK  &kp EQUAL  &kp PLUS    &kp MINUS   &i_uo     &trans
-   &trans  &kp CARET  &kp GRAVE  &kp SQT   &kp DQT   &kp TILDE      &sp4       &kp DEL    &caps_word  &kp UNDER   &kp SEMI  &trans
+   &trans  &kp CARET  &kp GRAVE  &kp SQT   &kp DQT   &kp TILDE      &sp4       &kp DEL    &caps_word  &kp UNDER   &kp PIPE  &trans
                                  &trans    &none     &trans         &trans     &mo 3      &trans
                         >;
                 };
